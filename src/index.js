@@ -4,5 +4,5 @@ document.title = '🦄'
 
 console.log('hi! 👋')
 
-const canvas = document.querySelector('#app')
-sceneThree(canvas)
+const container = document.querySelector('#container')
+sceneThree(container)

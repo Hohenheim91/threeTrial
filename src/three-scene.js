@@ -7,8 +7,10 @@ import { CannonPhysics } from 'three/examples/jsm/physics/CannonPhysics.js'
 var camera, scene, renderer
 var physics, position
 
-init()
-animate()
+export function sceneThree() {
+  init()
+  animate()
+}
 
 function init() {
   physics = new CannonPhysics()
@@ -47,6 +49,13 @@ function init() {
   scene.add(plane)
   physics.addMesh(plane)
 
+  var cubone = new THREE.Mesh(
+    new THREE.BoxGeometry(2, 0.2, 2),
+    new THREE.MeshBasicMaterial(),
+  )
+
+  scene.add(cubone)
+  physics.addMesh(cubone)
   /*
 				function getSize() {
 					return Math.random() * 0.1 + 0.05;
@@ -88,7 +97,9 @@ function init() {
   renderer.setSize(window.innerWidth, window.innerHeight)
   renderer.shadowMap.enabled = true
   renderer.outputEncoding = THREE.sRGBEncoding
-  document.body.appendChild(renderer.domElement)
+  // document.body.appendChild(renderer.domElement)
+  // const container = document.getElementById('container')
+  container.appendChild(renderer.domElement)
 
   //
 
@@ -98,7 +109,7 @@ function init() {
 function animate() {
   requestAnimationFrame(animate)
 
-  var mesh = scene.children[3]
+  var mesh = scene.children[4]
   var index = Math.floor(Math.random() * mesh.count)
 
   position.set(0, Math.random() * 2, 0)
